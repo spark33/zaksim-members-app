@@ -8,58 +8,26 @@ class WaitStatusesController < ApplicationController
     @wait_statuses = WaitStatus.all
   end
 
-  # GET /wait_statuses/1
-  # GET /wait_statuses/1.json
-  def show
-  end
-
   # GET /wait_statuses/new
   def new
     @wait_status = WaitStatus.new
     @member = Member.find(params[:member_id])
   end
 
-  # GET /wait_statuses/1/edit
-  def edit
-  end
-
   # POST /wait_statuses
   # POST /wait_statuses.json
   def create
     @wait_status = WaitStatus.new(wait_status_params)
-
+    @wait_status.start_date = Date.today
+    @wait_status.employee_id = current_user.id
     respond_to do |format|
       if @wait_status.save
-        format.html { redirect_to @wait_status, notice: 'Wait status was successfully created.' }
+        format.html { redirect_to member_path(@wait_status.member_id), notice: 'Wait status was successfully created.' }
         format.json { render :show, status: :created, location: @wait_status }
       else
         format.html { render :new }
         format.json { render json: @wait_status.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /wait_statuses/1
-  # PATCH/PUT /wait_statuses/1.json
-  def update
-    respond_to do |format|
-      if @wait_status.update(wait_status_params)
-        format.html { redirect_to @wait_status, notice: 'Wait status was successfully updated.' }
-        format.json { render :show, status: :ok, location: @wait_status }
-      else
-        format.html { render :edit }
-        format.json { render json: @wait_status.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /wait_statuses/1
-  # DELETE /wait_statuses/1.json
-  def destroy
-    @wait_status.destroy
-    respond_to do |format|
-      format.html { redirect_to wait_statuses_url, notice: 'Wait status was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

@@ -13,20 +13,10 @@
 
   <div class="field">
     <%= f.label :table_type %><br>
-    <%= f.text_field :table_type %>
+    <%= f.select :table_type, collection: WaitStatus::TABLE_TYPES %>
   </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :member_id %><br>
-    <%= f.number_field :member_id %>
-  </div>
-  <div class="field">
-    <%= f.label :employee_id %><br>
-    <%= f.number_field :employee_id %>
-  </div>
+  <%= f.hidden_field :member_id, :value => @member.id %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

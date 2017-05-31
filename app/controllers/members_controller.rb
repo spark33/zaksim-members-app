@@ -13,7 +13,7 @@ class MembersController < ApplicationController
   def show
     @employee = Employee.find(@member.employee_id)
     @registrations = Registration.for_member(@member.id)
-    @waitlists = WaitStatus.for_member(@member.id)
+    @wait_statuses = WaitStatus.for_member(@member.id)
   end
 
   # GET /members/new

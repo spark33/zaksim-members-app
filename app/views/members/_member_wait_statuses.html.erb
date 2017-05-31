@@ -1,0 +1,21 @@
+<h1>Wait Statuses</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Table Type</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Employee</th>
+		</tr>
+	</thead>
+	<% @wait_statuses.each do |ws| %>
+		<% employee = Employee.find(ws.employee_id)%>
+		<tr>
+			<td><%= ws.table_type %></td>
+			<td><%= ws.start_date %></td>
+			<td><%= ws.end_date %></td>
+			<td><%= link_to employee.name, employee %></td>
+		</tr>
+	<% end %>
+</table>

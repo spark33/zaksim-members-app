@@ -1,20 +1,22 @@
 class RegistrationsController < ApplicationController
-  before_action :set_registration, only: [:show, :edit, :update, :destroy]
+  before_action :set_registration, only: [:edit, :update, :destroy]
   before_action :check_login
 
   # GET /registrations
   # GET /registrations.json
   def index
-    @registrations = Registration.all
-  end
-
-  # GET /registrations/1
-  # GET /registrations/1.json
-  def show
+    @registrations = Registration.current
   end
 
   # GET /registrations/new
   def new
+    # check if the page was accessed correctly
+    if params[:member_id].nil?
+      flash[:error] = "Please create a registration path for a member from their profile page"
+      redirect_to registrations_path
+      return false
+    end
+
     if registration_already_exists?(params[:member_id].to_i)
       flash[:error] = "An ongoing registration for this member already exists."
       redirect_to member_path(params[:member_id])
@@ -35,8 +37,7 @@ class RegistrationsController < ApplicationController
     @registration.employee_id = current_user.id
     respond_to do |format|
       if @registration.save
-        format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
-        format.json { render :show, status: :created, location: @registration }
+        format.html { redirect_to member_path(@registration.member_id), notice: 'Registration was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
