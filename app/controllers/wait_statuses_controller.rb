@@ -16,6 +16,7 @@ class WaitStatusesController < ApplicationController
   # GET /wait_statuses/new
   def new
     @wait_status = WaitStatus.new
+    @member = Member.find(params[:member_id])
   end
 
   # GET /wait_statuses/1/edit

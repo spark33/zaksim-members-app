@@ -1,0 +1,21 @@
+<h1>Registrations</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Seat Number</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Employee</th>
+		</tr>
+	</thead>
+	<% @registrations.each do |r| %>
+		<% employee = Employee.find(r.employee_id)%>
+		<tr>
+			<td><%= r.seat_number %></td>
+			<td><%= r.start_date %></td>
+			<td><%= r.end_date %></td>
+			<td><%= link_to employee.name, employee %></td>
+		</tr>
+	<% end %>
+</table>

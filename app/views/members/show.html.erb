@@ -33,6 +33,12 @@
   <%= @employee.name %>
 </p>
 
+<%= render 'member_registrations' %>
+
+<div>
+  <%= link_to '대기 등록 신청', new_wait_status_path(:member_id => @member.id) %> |
+  <%= link_to '테이블 등록 신청', new_registration_path(:member_id => @member.id) %>
+</div>
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Destroy', @member, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', members_path %>

@@ -15,7 +15,13 @@ class RegistrationsController < ApplicationController
 
   # GET /registrations/new
   def new
+    if registration_already_exists?(params[:member_id].to_i)
+      flash[:error] = "An ongoing registration for this member already exists."
+      redirect_to member_path(params[:member_id])
+      return false
+    end
     @registration = Registration.new
+    @member = Member.find(params[:member_id])
   end
 
   # GET /registrations/1/edit
@@ -26,7 +32,7 @@ class RegistrationsController < ApplicationController
   # POST /registrations.json
   def create
     @registration = Registration.new(registration_params)
-
+    @registration.employee_id = current_user.id
     respond_to do |format|
       if @registration.save
         format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
@@ -63,6 +69,18 @@ class RegistrationsController < ApplicationController
   end
 
   private
+
+    def registration_already_exists?(member_id)
+      Registration.all.each do |r|
+        if r.member_id == member_id and 
+           r.start_date <= Date.today and 
+           Date.today <= r.end_date
+          return true
+        end
+      end
+      false
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_registration
       @registration = Registration.find(params[:id])

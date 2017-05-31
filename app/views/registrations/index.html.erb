@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Registrations</h1>
 
 <table>
@@ -9,22 +7,18 @@
       <th>Seat number</th>
       <th>Start date</th>
       <th>End date</th>
-      <th>Employee</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @registrations.each do |registration| %>
       <tr>
-        <td><%= registration.member_id %></td>
+        <td><%= link_to Member.find(registration.member_id).name, member_path(registration.member_id) %></td>
         <td><%= registration.seat_number %></td>
         <td><%= registration.start_date %></td>
         <td><%= registration.end_date %></td>
-        <td><%= registration.employee_id %></td>
         <td><%= link_to 'Show', registration %></td>
-        <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
-        <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
