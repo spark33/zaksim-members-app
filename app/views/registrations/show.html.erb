@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @registration.member_id %>
+</p>
+
+<p>
+  <strong>Seat number:</strong>
+  <%= @registration.seat_number %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @registration.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @registration.end_date %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @registration.employee_id %>
+</p>
+
+<%= link_to 'Edit', edit_registration_path(@registration) %> |
+<%= link_to 'Back', registrations_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  table_type: MyString
+  start_date: 2017-05-31
+  member_id: 1
+  employee_id: 1
+
+two:
+  table_type: MyString
+  start_date: 2017-05-31
+  member_id: 1
+  employee_id: 1

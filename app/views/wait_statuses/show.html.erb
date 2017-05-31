@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Table type:</strong>
+  <%= @wait_status.table_type %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @wait_status.start_date %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @wait_status.member_id %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @wait_status.employee_id %>
+</p>
+
+<%= link_to 'Edit', edit_wait_status_path(@wait_status) %> |
+<%= link_to 'Back', wait_statuses_path %>

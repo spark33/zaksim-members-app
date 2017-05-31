@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  member_id: 1
+  seat_number: MyString
+  start_date: 2017-05-31
+  end_date: 2017-05-31
+  employee_id: 1
+
+two:
+  member_id: 1
+  seat_number: MyString
+  start_date: 2017-05-31
+  end_date: 2017-05-31
+  employee_id: 1

@@ -1,0 +1,33 @@
+<%= form_for(@wait_status) do |f| %>
+  <% if @wait_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wait_status.errors.count, "error") %> prohibited this wait_status from being saved:</h2>
+
+      <ul>
+      <% @wait_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :table_type %><br>
+    <%= f.text_field :table_type %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :member_id %><br>
+    <%= f.number_field :member_id %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.number_field :employee_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
