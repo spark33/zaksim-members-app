@@ -11,6 +11,7 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    @employee = Employee.find(@member.employee_id)
   end
 
   # GET /members/new
@@ -26,7 +27,8 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
-
+    @member.join_date = Date.today
+    @member.employee_id = current_user.id
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully created.' }

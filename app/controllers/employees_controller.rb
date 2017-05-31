@@ -15,9 +15,6 @@ class EmployeesController < ApplicationController
 
   # GET /employees/new
   def new
-    if logged_in?
-      redirect_to employee_path(current_user.id)
-    end
     @employee = Employee.new
   end
 
@@ -29,7 +26,7 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
-
+    @employee.start_date = Date.today
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }

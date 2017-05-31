@@ -25,19 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :join_date %><br>
-    <%= f.date_select :join_date %>
+    <%= f.select :gender, collection: Member::GENDERS %>
   </div>
   <div class="field">
     <%= f.label :age_group %><br>
-    <%= f.text_field :age_group %>
-  </div>
-  <div class="field">
-    <%= f.label :employee_id %><br>
-    <%= f.number_field :employee_id %>
+    <%= f.select :age_group, collection: Member::AGE_GROUPS %>
   </div>
   <div class="actions">
     <%= f.submit %>
