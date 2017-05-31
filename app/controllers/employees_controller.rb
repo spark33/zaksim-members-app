@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
 
   # GET /employees
   # GET /employees.json
@@ -14,6 +15,9 @@ class EmployeesController < ApplicationController
 
   # GET /employees/new
   def new
+    if logged_in?
+      redirect_to employee_path(current_user.id)
+    end
     @employee = Employee.new
   end
 
@@ -30,6 +34,7 @@ class EmployeesController < ApplicationController
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
+        session[:employee_id] = @employee.id
       else
         format.html { render :new }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
@@ -61,6 +66,10 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def self.authenticate(email,password)
+    find_by_email(email).try(:authenticate, password)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
@@ -69,6 +78,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :start_date, :phone, :email, :level, :password_digest)
+      params.require(:employee).permit(:name, :start_date, :phone, :email, :role, :password, :password_confirmation)
     end
 end
