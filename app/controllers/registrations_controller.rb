@@ -28,6 +28,7 @@ class RegistrationsController < ApplicationController
 
   # GET /registrations/1/edit
   def edit
+    @member = Member.find(@registration.member_id)
   end
 
   # POST /registrations
@@ -39,6 +40,7 @@ class RegistrationsController < ApplicationController
       if @registration.save
         format.html { redirect_to member_path(@registration.member_id), notice: 'Registration was successfully created.' }
       else
+        @member = Member.find(@registration.member_id)
         format.html { render :new }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end
@@ -50,7 +52,7 @@ class RegistrationsController < ApplicationController
   def update
     respond_to do |format|
       if @registration.update(registration_params)
-        format.html { redirect_to @registration, notice: 'Registration was successfully updated.' }
+        format.html { redirect_to member_path(@registration.member_id), notice: 'Registration was successfully updated.' }
         format.json { render :show, status: :ok, location: @registration }
       else
         format.html { render :edit }
