@@ -5,7 +5,7 @@ class Registration < ActiveRecord::Base
 
 	after_create :end_wait_status
 	after_update :end_wait_status
-	before_save :check_dates
+	validate :check_dates
 	validates_uniqueness_of :seat_number
 
 	def end_wait_status
@@ -21,7 +21,8 @@ class Registration < ActiveRecord::Base
   	member_registrations.each do |r|
   		if ((r.start_date <= self.start_date and self.start_date <= r.end_date) or
 					(r.start_date <= self.end_date and self.end_date <= r.end_date)) and r.id != self.id
-				 return false
+				errors.add(:registration, "dates are overlapping")
+				return false
 			end
   	end
   end
