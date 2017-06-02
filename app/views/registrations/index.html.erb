@@ -1,12 +1,12 @@
-<h1>현재 가입한 멤버 리스트</h1>
+<h1>현재 등록된 회원 리스트</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Member</th>
-      <th>Seat number</th>
-      <th>Start date</th>
-      <th>End date</th>
+      <th>회원</th>
+      <th>자리 번호</th>
+      <th>등록 날짜</th>
+      <th>마감 날짜</th>
       <th></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
         <td><%= registration.seat_number %></td>
         <td><%= registration.start_date %></td>
         <td><%= registration.end_date %></td>
-        <td><%= link_to 'Show', registration %></td>
+        <td><%= link_to '등록 정보 수정하기', edit_registration_path(registration) %></td>
       </tr>
     <% end %>
   </tbody>

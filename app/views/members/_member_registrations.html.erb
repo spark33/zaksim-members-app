@@ -1,23 +1,25 @@
-<h1>Registrations</h1>
+<div class="box">
+	<h3>회원 가입 내역</h3>
 
-<table>
-	<thead>
-		<tr>
-			<th>Seat Number</th>
-			<th>Start Date</th>
-			<th>End Date</th>
-			<th>Employee</th>
-			<th></th>
-		</tr>
-	</thead>
-	<% @registrations.each do |r| %>
-		<% employee = Employee.find(r.employee_id)%>
-		<tr>
-			<td><%= r.seat_number %></td>
-			<td><%= r.start_date %></td>
-			<td><%= r.end_date %></td>
-			<td><%= link_to employee.name, employee %></td>
-			<td><%= link_to 'Edit', edit_registration_path(r) %></td>
-		</tr>
-	<% end %>
-</table>
+	<table>
+		<thead>
+			<tr>
+				<th>좌석 번호</th>
+				<th>등록 날짜</th>
+				<th>등록 마감 날짜</th>
+				<th>등록 담당 직원</th>
+				<th></th>
+			</tr>
+		</thead>
+		<% @registrations.each do |r| %>
+			<% employee = Employee.find(r.employee_id)%>
+			<tr>
+				<td><%= r.seat_number %></td>
+				<td><%= r.start_date %></td>
+				<td><%= r.end_date %></td>
+				<td><%= link_to employee.name, employee %></td>
+				<td><%= link_to '등록 수정하기', edit_registration_path(r) %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

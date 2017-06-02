@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :employees
   resources :wait_statuses
   resources :registrations, except: :show
-  resources :sessions
+  resources :sessions, except: :index
 
   # Set the root url
-  root :to => 'home#home'
+  root :to => 'home#home', as: :home
 
   # Authentication
   get 'logout' => 'sessions#destroy', as: :logout

@@ -1,0 +1,49 @@
+
+.alert
+{
+  width: 100%;
+  border-radius: 5px;
+  color: #333;
+  padding: 10px;
+  margin-bottom: 20px;
+  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+   -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+        box-sizing: border-box;
+}
+
+#notice:before
+{
+  content: '✔ ';
+}
+
+#notice
+{
+  margin: 0;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  background: #27a599;
+  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+   -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+        box-sizing: border-box;
+}
+
+small.error:before
+{
+  content: '× ';
+}
+
+small.error
+{
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  background: #ff3232;
+  display: block;
+  margin-bottom: 20px;
+  -webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+   -moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+        box-sizing: border-box;
+}

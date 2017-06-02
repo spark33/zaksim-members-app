@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Admin 계정이 필요한 액션 입니다."
+    redirect_to home_path
+  end
+
   private
   def current_user
     @current_user ||= Employee.find(session[:employee_id]) if session[:employee_id]

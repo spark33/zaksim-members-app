@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
   before_action :check_login
+  authorize_resource
 
   # GET /members
   # GET /members.json

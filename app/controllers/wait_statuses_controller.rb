@@ -1,6 +1,7 @@
 class WaitStatusesController < ApplicationController
   before_action :set_wait_status, only: [:show, :edit, :update, :destroy]
   before_action :check_login
+  authorize_resource
 
   # GET /wait_statuses
   # GET /wait_statuses.json

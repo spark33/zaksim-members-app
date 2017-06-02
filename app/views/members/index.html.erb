@@ -1,15 +1,16 @@
-<h1>Listing Members</h1>
+<h1>회원 목록</h1>
+<%= link_to '신규 회원 가입', new_member_path %>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Gender</th>
-      <th>Join date</th>
-      <th>Age group</th>
-      <th>Employee</th>
+      <th>성함</th>
+      <th>전화번호</th>
+      <th>이메일</th>
+      <th>성별</th>
+      <th>가입 날짜</th>
+      <th>나이</th>
+      <th>가입 담당 직원</th>
     </tr>
   </thead>
 
@@ -22,12 +23,9 @@
         <td><%= member.gender %></td>
         <td><%= member.join_date %></td>
         <td><%= member.age_group %></td>
-        <td><%= Employee.find(member.employee_id).name %></td>
+        <% employee = Employee.find(member.employee_id) %>
+        <td><%= link_to employee.name, employee %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Member', new_member_path %>

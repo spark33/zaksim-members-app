@@ -23,5 +23,7 @@
   <%= @employee.role %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<% if can? :edit, @employee %>
+  <%= link_to 'Edit', edit_employee_path(@employee) %>  |
+<% end %>
 <%= link_to 'Back', employees_path %>

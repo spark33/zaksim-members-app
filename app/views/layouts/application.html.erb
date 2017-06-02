@@ -10,9 +10,10 @@
 <body>
 
 	<%= render :partial => "partials/nav" %>
-	<%= render :partial => "partials/flash" %>
-
-	<%= yield %>
+	<main>
+		<%= render :partial => "partials/flash" %>
+		<%= yield %>
+	</main>
 
 </body>
 </html>

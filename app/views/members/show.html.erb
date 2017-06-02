@@ -1,45 +1,46 @@
-<p>
-  <strong>Name:</strong>
-  <%= @member.name %>
-</p>
+<div class="sidebar width-40" >
+  <h1>
+    <%= @member.name %>
+  </h1>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @member.phone %>
-</p>
+  <p>
+    <strong>전화번호:</strong>
+    <%= @member.phone %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @member.email %>
-</p>
+  <p>
+    <strong>이메일:</strong>
+    <%= @member.email %>
+  </p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @member.gender %>
-</p>
+  <p>
+    <strong>성별:</strong>
+    <%= @member.gender %>
+  </p>
 
-<p>
-  <strong>Join date:</strong>
-  <%= @member.join_date %>
-</p>
+  <p>
+    <strong>가입 날짜:</strong>
+    <%= @member.join_date %>
+  </p>
 
-<p>
-  <strong>Age group:</strong>
-  <%= @member.age_group %>
-</p>
+  <p>
+    <strong>나이:</strong>
+    <%= @member.age_group %>
+  </p>
 
-<p>
-  <strong>Employee:</strong>
-  <%= @employee.name %>
-</p>
-
-<%= render 'member_wait_statuses' %>
-<%= render 'member_registrations' %>
-
-<div>
+  <p>
+    <strong>가입 담당 직원:</strong>
+    <%= @employee.name %>
+  </p>
+  <div>
   <%= link_to '대기 등록 신청', new_wait_status_path(:member_id => @member.id) %> |
   <%= link_to '테이블 등록 신청', new_registration_path(:member_id => @member.id) %>
 </div>
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Destroy', @member, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', members_path %>
+  <%= link_to '회원 정보 수정하기', edit_member_path(@member) %> |
+  <%= link_to 'Destroy', @member, method: :delete, data: { confirm: 'Are you sure?' } %> |
+</div>
+
+<div class="sidebar width-50">
+  <%= render 'member_registrations' %>
+  <%= render 'member_wait_statuses' %>
+</div>
