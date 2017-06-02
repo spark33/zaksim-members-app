@@ -1,0 +1,13 @@
+<h3>최근 독서실 영업 관련</h3>
+<%= link_to '게시글 올리기', new_post_path %>
+<ul>
+	<% @recent_posts.each do |p| %>
+		<li>
+			<h5><%= Employee.find(p.employee_id).name %></h5>
+			<b><%= p.created_at %></b>
+			<p><%= p.content %></p>
+		</li>
+		<%= link_to '수정하기', edit_post_path(p) %> |
+		<%= link_to '지우기', p, method: :delete, data: { confirm: '이 게시글을 지우시겠습니까?' } %>
+	<% end %>
+</ul>

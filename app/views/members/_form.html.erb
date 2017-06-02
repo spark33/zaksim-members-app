@@ -31,6 +31,14 @@
     <%= f.label :age_group %><br>
     <%= f.select :age_group, collection: Member::AGE_GROUPS %>
   </div>
+  <div class="field">
+    <%= f.label :school %><br>
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

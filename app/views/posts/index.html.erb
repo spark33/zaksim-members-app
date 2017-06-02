@@ -1,0 +1,28 @@
+<h1>게시글 목록</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>게시 시간</th>
+      <th>내용</th>
+      <th>올린 이</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <% employee = Employee.find(post.employee_id) %>
+      <tr>
+        <td><%= post.created_at %></td>
+        <td><%= post.content %></td>
+        <td><%= link_to employee.name, employee %></td>
+        <td><%= link_to '자세히 보기', post %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

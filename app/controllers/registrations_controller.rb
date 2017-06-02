@@ -56,6 +56,7 @@ class RegistrationsController < ApplicationController
         format.html { redirect_to member_path(@registration.member_id), notice: 'Registration was successfully updated.' }
         format.json { render :show, status: :ok, location: @registration }
       else
+        @member = Member.find(@registration.member_id)
         format.html { render :edit }
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end

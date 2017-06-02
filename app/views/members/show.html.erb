@@ -29,9 +29,20 @@
   </p>
 
   <p>
+    <strong>학교:</strong>
+    <%= @member.school %>
+  </p>
+
+  <p>
     <strong>가입 담당 직원:</strong>
     <%= @employee.name %>
   </p>
+
+  <p>
+    <strong>특이사항:</strong>
+    <%= @member.comment %>
+  </p>
+  
   <div>
   <%= link_to '대기 등록 신청', new_wait_status_path(:member_id => @member.id) %> |
   <%= link_to '테이블 등록 신청', new_registration_path(:member_id => @member.id) %>

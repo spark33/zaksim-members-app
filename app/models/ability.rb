@@ -19,9 +19,9 @@ class Ability
       end
       
       can :read, :all
-      can :manage, :member
-      can :manage, :registration
-      can :manage, :wait_status
+      can :manage, Member
+      can :manage, Registration
+      can :manage, WaitStatus
     end
   end
 end
