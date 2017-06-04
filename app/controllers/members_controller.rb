@@ -6,7 +6,15 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    if params[:search]
+      @members = Member.search(params[:search]).alphabetical
+    else
+      @members = Member.all.alphabetical
+    end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @members.to_csv }
+    end
   end
 
   # GET /members/1
@@ -75,6 +83,6 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:name, :phone, :email, :gender, :join_date, :age_group, :employee_id, :school, :comment)
+      params.require(:member).permit(:name, :phone, :email, :gender, :join_date, :birthdate, :employee_id, :school, :comment)
     end
 end

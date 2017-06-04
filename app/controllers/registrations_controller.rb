@@ -6,7 +6,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   def index
-    @registrations = Registration.current
+    @registrations = Registration.current.order('seat_number')
   end
 
   # GET /registrations/new

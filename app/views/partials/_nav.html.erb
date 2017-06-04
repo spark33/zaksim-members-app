@@ -8,7 +8,7 @@
 	</div>
 	<div>
 		<% if logged_in? %>
-			Welcome, <%= link_to current_user.name, employee_path(current_user) %>
+			<%= link_to "안녕하세요, #{current_user.name}님", employee_path(current_user) %>
 			<%= link_to "로그아웃", logout_path, class: "nav-link" %>
 		<% else %>
 			<%= link_to "로그인", login_path, class: "nav-link" %>

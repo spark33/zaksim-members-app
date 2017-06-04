@@ -11,6 +11,7 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
+    @posts = Post.for_employee(@employee.id)
   end
 
   # GET /employees/new

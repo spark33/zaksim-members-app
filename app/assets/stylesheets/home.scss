@@ -1,0 +1,72 @@
+// Place all the styles related to the HomeController controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.post
+{
+	background: white;
+	border: 1px solid #d0d0d0;
+	position: relative;
+	padding: 20px 20px 6px 20px;
+	margin: 5px;
+}
+
+.post h4
+{
+	margin: 0;
+}
+
+.post a
+{
+	text-decoration: none;
+	margin: 2px;
+}
+
+.post-commands
+{
+	position: absolute;
+	top: 20px;
+	right: 12px;
+}
+
+#home-features > .post
+{
+	margin-top: 0;
+	border-top: none;
+}
+
+#home-shortcuts
+{
+	background: #efefdd;
+	border: 1px solid #d0d0d0;
+	margin: 0 5px;
+	padding: 8px 20px;
+}
+
+#home-shortcuts > a
+{
+	margin: 0 3%;
+}
+
+#home-shortcuts > a:first-of-type
+{
+	margin-left: 0px;
+}
+
+.section
+{
+	background: white;
+	border: 1px solid #d0d0d0;
+	position: relative;
+	padding: 0 20px 15px 20px;
+	margin: 5px;
+}
+
+.box
+{
+	padding: 5%;
+	border: 1px solid #d0d0d0;
+	background: #efefdd;
+	margin-bottom: 5px;
+}

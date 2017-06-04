@@ -1,6 +1,6 @@
 <h1>직원 목록</h1>
 
-<table>
+<table class="index-table">
   <thead>
     <tr>
       <th>이름</th>
@@ -25,7 +25,6 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Employee', new_employee_path %>
+<% if can? :create, Employee %>
+  <%= link_to '직원 추가', new_employee_path %>
+<% end %>

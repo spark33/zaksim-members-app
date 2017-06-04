@@ -1,0 +1,31 @@
+<div id="home-features">
+	<div id="home-shortcuts">
+		<%= link_to new_post_path do %>
+			<%= fa_icon "pencil" %> 게시물 작성
+		<% end %>
+		<%= link_to new_member_path do %>
+			<%= fa_icon "plus" %> 회원추가
+		<% end %>
+	</div>
+	<% if @last_admin_post %>
+		<div class="post">
+			<h4><%= @last_admin_post.employee.name %></h4>
+			<small>
+				<%= @last_admin_post.created_at.strftime("%Y/%m/%d - %H:%M") %>
+			</small>
+			<p><%= @last_admin_post.content %></p>
+			<% if can? :edit, @last_admin_post %>
+				<div class="post-commands">
+					<%= link_to edit_post_path(@last_admin_post) do %>
+						<%= fa_icon "pencil" %>
+					<% end %> |
+					<%= link_to @last_admin_post, method: :delete, data: { confirm: '이 게시글을 지우시겠습니까?' } do %>
+						<%= fa_icon "times" %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	<% else %>
+		<p>어드민이 올린 게시물이 없습니다.</p>
+	<% end %>
+</div>

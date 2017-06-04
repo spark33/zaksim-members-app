@@ -1,0 +1,33 @@
+<div class="section">
+	<h3>생일인 회원</h3>
+	<% unless @birthday_members.empty? %>
+		<table class="index-table">
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>이메일</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<% @birthday_members.each do |m| %>
+				<tr>
+					<td><%= link_to m.name, m %></td>
+					<td><%= m.phone %></td>
+					<td><%= m.email %></td>
+					<td>
+	          <% if m.status.class.name == "Registration" %>
+	            <%= "#{m.status.seat_number}번 테이블 ~#{m.status.end_date}" %>
+	          <% elsif m.status.class.name == "WaitStatus" %>
+	            <%= "#{m.status.table_type.capitalize} 테이블 #{m.status.start_date}부터 대기 중" %>
+	          <% else %>
+	            없음
+	          <% end %>
+	        </td>
+				</tr>
+			<% end %>
+		</table>
+	<% else %>
+		<p>오늘 생일인 회원이 없습니다.</p>
+	<% end %>
+</div>

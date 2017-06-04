@@ -1,31 +1,49 @@
-<h1>회원 목록</h1>
-<%= link_to '신규 회원 가입', new_member_path %>
-
-<table>
-  <thead>
-    <tr>
-      <th>성함</th>
-      <th>전화번호</th>
-      <th>이메일</th>
-      <th>성별</th>
-      <th>가입 날짜</th>
-      <th>나이</th>
-      <th>가입 담당 직원</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @members.each do |member| %>
-      <tr>
-        <td><%= link_to member.name, member %></td>
-        <td><%= member.phone %></td>
-        <td><%= member.email %></td>
-        <td><%= member.gender %></td>
-        <td><%= member.join_date %></td>
-        <td><%= member.age_group %></td>
-        <% employee = Employee.find(member.employee_id) %>
-        <td><%= link_to employee.name, employee %></td>
-      </tr>
+<div class="index-view">
+  <h1>회원 목록</h1>
+  <div class="index-commands">
+    <%= link_to new_member_path, class:"button" do %>
+      <%= fa_icon "plus" %> 회원추가
     <% end %>
-  </tbody>
-</table>
+    <%= link_to 'members.csv', class:"button" do %>
+      <%= fa_icon "download" %> CSV 다운로드
+    <% end %>
+  </div>
+  <div>
+    <%= form_tag(members_path, :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "회원 검색" %>
+      <%= submit_tag "검색" %>
+    <% end %>
+  </div>
+
+  <table class="index-table">
+    <thead>
+      <tr>
+        <th>성함</th>
+        <th>전화번호</th>
+        <th>성별</th>
+        <th>가입 날짜</th>
+        <th colspan="2">가입 상태</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <td><%= link_to member.name, member %></td>
+          <td><%= member.phone %></td>
+          <td><%= member.gender.capitalize %></td>
+          <td><%= member.join_date %></td>
+          <td colspan="2">
+            <% if member.status.class.name == "Registration" %>
+              <%= "#{member.status.seat_number}번 테이블 ~#{member.status.end_date}" %>
+            <% elsif member.status.class.name == "WaitStatus" %>
+              <%= "#{member.status.table_type.capitalize} 테이블 #{member.status.start_date}부터 대기 중" %>
+            <% else %>
+              없음
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

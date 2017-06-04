@@ -9,20 +9,27 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def current_user
-    @current_user ||= Employee.find(session[:employee_id]) if session[:employee_id]
-  end
-  helper_method :current_user
-
-  def logged_in?
-    current_user
-  end
-  helper_method :logged_in?
-
-  def check_login
-    if current_user.nil?
-      flash[:error] = "You need to log in to view this page."
-      redirect_to login_url
+    def trancate(string, length = 35)
+      string.size > length+5 ? [string[0,length],string[-5,5]].join("...") : string
     end
-  end
+    helper_method :trancate
+
+    def current_user
+      @current_user ||= Employee.find(session[:employee_id]) if session[:employee_id]
+    end
+    
+    helper_method :current_user
+
+    def logged_in?
+      current_user
+    end
+    helper_method :logged_in?
+
+    def check_login
+      if current_user.nil?
+        flash[:error] = "You need to log in to view this page."
+        redirect_to login_url
+      end
+    end
+    
 end

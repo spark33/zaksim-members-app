@@ -28,8 +28,8 @@
     <%= f.select :gender, collection: Member::GENDERS %>
   </div>
   <div class="field">
-    <%= f.label :age_group %><br>
-    <%= f.select :age_group, collection: Member::AGE_GROUPS %>
+    <%= f.label :birthdate %><br>
+    <%= f.date_select :birthdate, :start_year=>1900,:end_year=>Date.current.year, :selected=>1990 %>
   </div>
   <div class="field">
     <%= f.label :school %><br>

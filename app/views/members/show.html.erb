@@ -24,8 +24,8 @@
   </p>
 
   <p>
-    <strong>나이:</strong>
-    <%= @member.age_group %>
+    <strong>생년월일:</strong>
+    <%= @member.birthdate %>
   </p>
 
   <p>
@@ -51,7 +51,7 @@
   <%= link_to 'Destroy', @member, method: :delete, data: { confirm: 'Are you sure?' } %> |
 </div>
 
-<div class="sidebar width-50">
+<div class="sidebar right-sidebar width-50">
   <%= render 'member_registrations' %>
   <%= render 'member_wait_statuses' %>
 </div>

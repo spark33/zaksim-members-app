@@ -1,0 +1,25 @@
+<div class="section">
+	<h3>등록 만기 예정 회원</h3>
+	<% unless @registrations_almost_done.empty? %>
+		<table class="index-table">
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>좌석번호</th>
+					<th>전화번호</th>
+					<th>만기 날짜</th>
+				</tr>
+			</thead>
+			<% @registrations_almost_done.each do |r| %>
+				<tr>
+					<td><%= link_to r.member.name, r.member %></td>
+					<td><%= r.seat_number %></td>
+					<td><%= r.member.phone %></td>
+					<td><%= r.end_date %></td>
+				</tr>
+			<% end %>
+		</table>
+	<% else %>
+		<p>5일 이내 만기 예정인 예약이 없습니다.</p>
+	<% end %>
+</div>

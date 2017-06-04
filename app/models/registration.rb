@@ -2,6 +2,8 @@ class Registration < ActiveRecord::Base
 
 	scope :for_member, ->(member_id){ where(member_id: member_id) }
 	scope :current, ->{ where("start_date <= ? AND ? <= end_date", Date.today, Date.today) }
+	scope :almost_done, ->{ where("? < end_date AND end_date < ?", Date.today, Date.today + 5)}
+	scope :chronological, ->{ order("start_date DESC") }
 
 	after_create :end_wait_status
 	after_update :end_wait_status
@@ -25,6 +27,10 @@ class Registration < ActiveRecord::Base
 				return false
 			end
   	end
+  end
+
+  def member
+  	Member.find(self.member_id)
   end
 
 end

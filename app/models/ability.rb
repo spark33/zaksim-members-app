@@ -7,6 +7,7 @@ class Ability
     user ||= Employee.new # guest user (not logged in)
     if user.role? :admin
       can :manage, :all
+      can :create, Employee
     end
     if user.role? :manager
 
@@ -17,7 +18,16 @@ class Ability
       can :edit, Employee do |e|
         e.id == user.id
       end
-      
+
+      can :edit, Post do |p|
+        p.employee_id == user.id
+      end
+
+      can :delete, Post do |p|
+        p.employee_id == user.id
+      end
+
+      can :create, Post
       can :read, :all
       can :manage, Member
       can :manage, Registration

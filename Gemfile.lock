@@ -55,6 +55,8 @@ GEM
     debug_inspector (0.0.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     hirb (0.7.3)
@@ -152,6 +154,7 @@ DEPENDENCIES
   byebug
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
+  font-awesome-rails
   hirb
   jbuilder (~> 2.0)
   jquery-rails
