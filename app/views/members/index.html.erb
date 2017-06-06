@@ -31,13 +31,7 @@
           <td><%= member.gender.capitalize %></td>
           <td><%= member.join_date %></td>
           <td colspan="2">
-            <% if member.status.class.name == "Registration" %>
-              <%= "#{member.status.seat_number}번 테이블 ~#{member.status.end_date}" %>
-            <% elsif member.status.class.name == "WaitStatus" %>
-              <%= "#{member.status.table_type.capitalize} 테이블 #{member.status.start_date}부터 대기 중" %>
-            <% else %>
-              없음
-            <% end %>
+            <%= member.status_string %>
           </td>
         </tr>
       <% end %>

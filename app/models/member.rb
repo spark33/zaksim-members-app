@@ -19,15 +19,26 @@ class Member < ActiveRecord::Base
 		nil
 	end
 
+	def status_string
+		if self.status.class.name == "Registration"
+      return "#{self.status.seat_number}번 테이블 ~#{self.status.end_date}"
+    elsif self.status.class.name == "WaitStatus"
+      return "#{self.status.table_type.capitalize} 테이블 #{self.status.start_date}부터 대기 중"
+    else 
+      return "없음"
+    end
+	end
+
 	def employee
 		Employee.find(self.employee_id)
 	end
 
 	def self.to_csv
+
     CSV.generate do |csv|
-      csv << column_names
+      csv << column_names + ['Status']
       all.each do |result|
-        csv << result.attributes.values_at(*column_names)
+        csv << result.attributes.values_at(*column_names - ['Status']) + [result.status_string]
       end
     end
   end
