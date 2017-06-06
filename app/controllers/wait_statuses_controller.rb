@@ -7,6 +7,10 @@ class WaitStatusesController < ApplicationController
   # GET /wait_statuses.json
   def index
     @current_wait_statuses = WaitStatus.current.order('table_type', 'start_date')
+    respond_to do |format|
+      format.html
+      format.csv { send_data @current_wait_statuses.to_csv }
+    end
   end
 
   # GET /wait_statuses/new

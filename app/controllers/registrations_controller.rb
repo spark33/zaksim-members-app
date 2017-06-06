@@ -7,6 +7,10 @@ class RegistrationsController < ApplicationController
   # GET /registrations.json
   def index
     @registrations = Registration.current.order('seat_number')
+    respond_to do |format|
+      format.html
+      format.csv { send_data @registrations.to_csv }
+    end
   end
 
   # GET /registrations/new

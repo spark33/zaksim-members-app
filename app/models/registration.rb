@@ -34,4 +34,18 @@ class Registration < ActiveRecord::Base
   	Member.find(self.member_id)
   end
 
+  def employee
+    Employee.find(self.employee_id)
+  end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      col_names = column_names - ['id','member_id', 'employee_id'] + ['Member', 'Employee']
+      csv << col_names
+      all.each do |result|
+        csv << result.attributes.values_at(*(col_names - ['Member', 'Employee'])) + [result.member.name, result.employee.name]
+      end
+    end
+  end
+
 end

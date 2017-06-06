@@ -1,27 +1,35 @@
-<h1>대기자 목록</h1>
+<div class="index-view">
+  <h1>대기자 목록</h1>
 
-<table class="index-table">
-  <thead>
-    <tr>
-      <th>Table Type</th>
-      <th>Member</th>
-      <th>Start date</th>
-      <!-- <th colspan="3"></th> -->
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @current_wait_statuses.each do |wait_status| %>
-      <tr>
-        <td><%= wait_status.table_type %></td>
-        <td><%= wait_status.member.name %></td>
-        <td><%= wait_status.start_date %></td>
-        <!--
-        <td><%#= link_to 'Show', wait_status %></td>
-        <td><%#= link_to 'Edit', edit_wait_status_path(wait_status) %></td>
-        <td><%#= link_to 'Destroy', wait_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        -->
-      </tr>
+  <div class="index-commands">
+    <%= link_to 'wait_statuses.csv', class:"button" do %>
+      <%= fa_icon "download" %> CSV 다운로드
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <table class="index-table">
+    <thead>
+      <tr>
+        <th>Table Type</th>
+        <th>Member</th>
+        <th>Start date</th>
+        <!-- <th colspan="3"></th> -->
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @current_wait_statuses.each do |wait_status| %>
+        <tr>
+          <td><%= wait_status.table_type %></td>
+          <td><%= wait_status.member.name %></td>
+          <td><%= wait_status.start_date %></td>
+          <!--
+          <td><%#= link_to 'Show', wait_status %></td>
+          <td><%#= link_to 'Edit', edit_wait_status_path(wait_status) %></td>
+          <td><%#= link_to 'Destroy', wait_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          -->
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
