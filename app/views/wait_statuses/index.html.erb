@@ -1,31 +1,27 @@
-<h1>Listing Wait Statuses</h1>
+<h1>대기자 목록</h1>
 
-<table>
+<table class="index-table">
   <thead>
     <tr>
-      <th>Table type</th>
-      <th>Start date</th>
+      <th>Table Type</th>
       <th>Member</th>
-      <th>Employee</th>
-      <th colspan="3"></th>
+      <th>Start date</th>
+      <!-- <th colspan="3"></th> -->
     </tr>
   </thead>
 
   <tbody>
-    <% @wait_statuses.each do |wait_status| %>
+    <% @current_wait_statuses.each do |wait_status| %>
       <tr>
         <td><%= wait_status.table_type %></td>
+        <td><%= wait_status.member.names %></td>
         <td><%= wait_status.start_date %></td>
-        <td><%= wait_status.member_id %></td>
-        <td><%= wait_status.employee_id %></td>
-        <td><%= link_to 'Show', wait_status %></td>
-        <td><%= link_to 'Edit', edit_wait_status_path(wait_status) %></td>
-        <td><%= link_to 'Destroy', wait_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--
+        <td><%#= link_to 'Show', wait_status %></td>
+        <td><%#= link_to 'Edit', edit_wait_status_path(wait_status) %></td>
+        <td><%#= link_to 'Destroy', wait_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        -->
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Wait status', new_wait_status_path %>

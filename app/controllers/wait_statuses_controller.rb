@@ -6,7 +6,7 @@ class WaitStatusesController < ApplicationController
   # GET /wait_statuses
   # GET /wait_statuses.json
   def index
-    @wait_statuses = WaitStatus.all
+    @current_wait_statuses = WaitStatus.current.order('table_type', 'start_date')
   end
 
   # GET /wait_statuses/new

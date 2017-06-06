@@ -1,6 +1,6 @@
 class WaitStatus < ActiveRecord::Base
 
-	TABLE_TYPES = [['Zaksim',:zaksim], ['Oxford', :oxford], ['Cambridge', :cambridge], ['Cambridge Prime',:cambridge_prime],['Bodleian', :bodleian]]
+	TABLE_TYPES = [['Zaksim',:zaksim], ['Cambridge', :cambridge], ['Cambridge Prime',:cambridge_prime],['자유석', :free_seating]]
 
 	scope :chronological, ->{ order('start_date DESC') }
 	scope :for_member, ->(member_id){ where(member_id: member_id) }
@@ -21,7 +21,10 @@ class WaitStatus < ActiveRecord::Base
 				ws.save!
 			end
 		end
+	end
 
+	def member
+		Member.find(self.member_id)
 	end
 
 end
