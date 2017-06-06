@@ -10,9 +10,11 @@
   <table class="index-table">
     <thead>
       <tr>
-        <th>Table Type</th>
-        <th>Member</th>
-        <th>Start date</th>
+        <th>대기자</th>
+        <th>테이블</th>
+        <th>대기 시작 날짜</th>
+        <th>전화번호</th>
+        <th>이메일</th>
         <!-- <th colspan="3"></th> -->
       </tr>
     </thead>
@@ -20,9 +22,11 @@
     <tbody>
       <% @current_wait_statuses.each do |wait_status| %>
         <tr>
-          <td><%= wait_status.table_type %></td>
-          <td><%= wait_status.member.name %></td>
+          <td><%= link_to wait_status.member.name, wait_status.member %></td>
+          <td><%= wait_status.table_type.capitalize %></td>
           <td><%= wait_status.start_date %></td>
+          <td><%= wait_status.member.phone %></td>
+          <td><%= wait_status.member.email %></td>
           <!--
           <td><%#= link_to 'Show', wait_status %></td>
           <td><%#= link_to 'Edit', edit_wait_status_path(wait_status) %></td>

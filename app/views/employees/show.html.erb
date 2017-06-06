@@ -20,6 +20,10 @@
     <strong>직책:</strong>
     <%= @employee.role %>
   </p>
+
+  <% if can? :delete, @employee %>
+    <%= link_to '지우기', @employee, method: :delete, data: { confirm: '이 직원을 지우시겠습니까?' } %>
+  <% end %>
 </div>
 <div>
   <h1>최근 게시물</h1>
