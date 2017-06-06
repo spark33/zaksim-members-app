@@ -32,7 +32,6 @@ class EmployeesController < ApplicationController
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
-        session[:employee_id] = @employee.id
       else
         format.html { render :new }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
