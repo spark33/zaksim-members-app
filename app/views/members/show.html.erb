@@ -1,7 +1,10 @@
 <div class="sidebar width-40" >
-  <h1>
-    <%= @member.name %>
-  </h1>
+
+  <div>
+    <h1><%= @member.name %></h1>
+    <%= link_to '+ 대기 등록 신청', new_wait_status_path(:member_id => @member.id), class:"button" %>
+    <%= link_to '+ 테이블 등록 신청', new_registration_path(:member_id => @member.id), class:"button" %>
+  </div>
 
   <p>
     <strong>전화번호:</strong>
@@ -42,13 +45,7 @@
     <strong>특이사항:</strong>
     <%= @member.comment %>
   </p>
-  
-  <div>
-  <%= link_to '대기 등록 신청', new_wait_status_path(:member_id => @member.id) %> |
-  <%= link_to '테이블 등록 신청', new_registration_path(:member_id => @member.id) %>
-</div>
-  <%= link_to '회원 정보 수정하기', edit_member_path(@member) %> |
-  <%= link_to 'Destroy', @member, method: :delete, data: { confirm: 'Are you sure?' } %> |
+  <%= link_to '회원 정보 수정하기', edit_member_path(@member) %>
 </div>
 
 <div class="sidebar right-sidebar width-50">

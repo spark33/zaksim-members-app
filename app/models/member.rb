@@ -5,6 +5,8 @@ class Member < ActiveRecord::Base
 	scope :alphabetical, -> { order('name') }
 	scope :birthday_today, -> { where("cast(strftime('%m', birthdate) as int) = ? AND cast(strftime('%d', birthdate) as int) = ?", Date.today.month, Date.today.day) }
 
+	validates_presence_of :name, :phone, :gender, :join_date, :birthdate, :school
+
 	def self.search(search)
 	  where("name LIKE ?", "%#{search}%") 
 	end

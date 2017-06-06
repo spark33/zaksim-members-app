@@ -13,13 +13,13 @@ class RegistrationsController < ApplicationController
   def new
     # check if the page was accessed correctly
     if params[:member_id].nil?
-      flash[:error] = "Please create a registration path for a member from their profile page"
+      flash[:error] = "회원 프로필을 통해서 등록해 주시기 바랍니다."
       redirect_to registrations_path
       return false
     end
 
     if registration_already_exists?(params[:member_id].to_i)
-      flash[:error] = "An ongoing registration for this member already exists."
+      flash[:error] = "이 회원을 이미 등록된 테이블이 있습니다."
       redirect_to member_path(params[:member_id])
       return false
     end

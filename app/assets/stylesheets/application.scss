@@ -26,6 +26,13 @@ body
 	background: #f7f8ee;
 }
 
+pre
+{
+	font-family: 'Noto Sans KR', sans-serif;
+	line-height: 1.5em;
+	white-space: pre-wrap;
+}
+
 main
 {
 	padding: 2% 5%;
@@ -93,9 +100,11 @@ nav > div:nth-child(2)
 {
 	background: $gold;
 	padding: 5px 9px;
-	display: block;
+	display: inline-block;
 	color: white;
 	text-decoration: none;
+	border: none;
+	font-size: 1.2em;
 }
 
 
@@ -122,13 +131,14 @@ nav > div:nth-child(2)
 .index-view
 {
 	position: relative;
+	margin: 0 5%;
 }
 
 .index-commands
 {
 	position: absolute;
 	top: 10px;
-	right: 10px;
+	right: 0;
 }
 
 .index-commands > *
@@ -136,3 +146,7 @@ nav > div:nth-child(2)
 	display: inline-block;
 }
 
+.index-commands input
+{
+	padding: 5px 9px;
+}

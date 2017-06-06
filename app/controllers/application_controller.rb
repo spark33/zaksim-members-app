@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    def trancate(string, length = 35)
+    def trancate(string, length = 25)
       string.size > length+5 ? [string[0,length],string[-5,5]].join("...") : string
     end
     helper_method :trancate
@@ -31,5 +31,10 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+
+    def format_string(s)
+      s.gsub(/\n/,'<br/>')
+    end
+    helper_method :format_string
     
 end

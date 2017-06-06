@@ -1,37 +1,30 @@
-<div class="sidebar width-50">
-  <p>
-    <strong>Name:</strong>
-    <%= @employee.name %>
-  </p>
+<div>
+  <h1><%= @employee.name %></h1>
 
   <p>
-    <strong>Start date:</strong>
+    <strong>가입 날짜</strong>
     <%= @employee.start_date %>
   </p>
 
   <p>
-    <strong>Phone:</strong>
+    <strong>전화번호:</strong>
     <%= @employee.phone %>
   </p>
 
   <p>
-    <strong>Email:</strong>
+    <strong>이메일:</strong>
     <%= @employee.email %>
   </p>
 
   <p>
-    <strong>Role:</strong>
+    <strong>직책:</strong>
     <%= @employee.role %>
   </p>
-
-  <% if can? :edit, @employee %>
-    <%= link_to 'Edit', edit_employee_path(@employee) %>  |
-  <% end %>
-  <%= link_to 'Back', employees_path %>
 </div>
-<div class="sidebar width-40">
+<div>
+  <h1>최근 게시물</h1>
   <% if @posts %>
-    <table>
+    <table class="index-table">
       <thead>
         <tr>
           <th>게시 시간</th>
